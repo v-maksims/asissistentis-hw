@@ -1,5 +1,4 @@
 import { useRef } from 'react';
-
 import Button from '../../Buttons/button/Button';
 import InputFile from '../../inputs/inputFile/InputFile';
 import style from './AudioUpload.module.scss';
@@ -7,7 +6,7 @@ import useToasts from '../../../hooks/useToasts';
 
 type TAudioUploadProps = {
     newAudioLoad: boolean,
-    mutate: any,
+    mutate: (data:FormData) => void,
     fileName: string,
     inputFileHandler: (name: string) => void,
 }
