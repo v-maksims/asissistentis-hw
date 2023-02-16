@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
 import express from "express";
 import { Request, Response } from "express";
 import bodyparser from "body-parser";
