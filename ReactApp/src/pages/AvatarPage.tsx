@@ -17,7 +17,10 @@ export default function AvatarPage () {
                     />
                 </div>
                 {openAvatar
-                    && <Avatar/>
+                    && <>
+                        <span>Choice different parts:</span>
+                        <Avatar/>
+                    </>
                 }
             </div>
         </>
