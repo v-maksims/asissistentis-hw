@@ -1,0 +1,45 @@
+.audioPlayerWrap {
+    width: 500px;
+    padding: 5px;
+    border: 1px solid white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.audioTextAndNextPrevios {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.audio {
+    width: 200px;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+
+.controlsWrap{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.time{
+    display: inline-block;
+    width: 40px;
+}
+
+.speedControls{
+    margin-top: 10px;
+    display: flex;
+    gap: 5px;
+}

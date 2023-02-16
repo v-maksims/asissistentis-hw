@@ -1,0 +1,7 @@
+CREATE DATABASE assistentisDB;
+
+CREATE TABLE audio ( 
+    id INT NOT NULL AUTO_INCREMENT,
+    file VARCHAR(100) NOT NULL,
+    PRIMARY KEY (id)
+);

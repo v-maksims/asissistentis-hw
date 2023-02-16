@@ -1,0 +1,12 @@
+.control {
+    background-color: transparent;
+    border: 0;
+    color: #820000;
+    transition: all .2s;
+    padding: 0;
+
+    &:hover {
+        scale: 80%;
+        color: white;
+    }
+}

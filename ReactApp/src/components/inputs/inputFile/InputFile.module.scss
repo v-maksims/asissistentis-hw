@@ -1,0 +1,24 @@
+.input {
+    position: absolute;
+    opacity: 0;
+    z-index: -1;
+}
+
+.inputFake {
+    display: flex;
+    width: 25px;
+    height: 25px;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(59, 58, 59);
+    color: black;
+    background-color: white;
+    border-radius: 50%;
+    font-size: 1.50rem;
+    cursor: pointer;
+    transition: scale .2s;
+
+    &:hover {
+        scale: 90%;
+    }
+}
