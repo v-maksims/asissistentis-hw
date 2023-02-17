@@ -1,56 +1,72 @@
 import React, { useRef, useState } from 'react';
 
+type TPlayerState = {
+    current:number;
+    play: boolean;
+    duration: number;
+    currentTime: number;
+    volume: number;
+    audioLoaded: boolean;
+}
+
 export default function useAudioPlayer (paths:string[]) {
     const audioRef = useRef<HTMLAudioElement>(null);
 
-    const [current, setCurrent] = useState(0);
-    const [play, setPlay] = useState(false);
-    const [duration, setDuration] = useState(0);
-    const [currentTime, setCurrentTime] = useState(0);
-    const [volume, setVolume] = useState(100);
-    const [audioLoaded, setAudioLoaded] = useState(false);
+    const [player, setPlayer] = useState<TPlayerState>({
+        current: 0,
+        play: false,
+        duration: 0,
+        currentTime: 0,
+        volume: 100,
+        audioLoaded: false,
+    });
+
+    const {
+        audioLoaded,
+        current,
+        currentTime,
+        duration,
+        play,
+        volume,
+    } = player;
 
     const playing = () => {
         setTimeout(() => audioRef.current?.play(), 100);
-        setPlay(true);
+        setPlayer({ ...player, play: true });
     };
 
     const stoping = () => {
         audioRef.current?.pause();
-        setPlay(false);
+        setPlayer({ ...player, play: false });
     };
 
     const nextHandler = () => {
-        if (current === paths.length - 1) {
-            setCurrent(0);
-        } else {
-            setCurrent(current + 1);
-        }
         playing();
+        if (current === paths.length - 1) {
+            return setPlayer({ ...player, current: 0, play: true });
+        }
+        return setPlayer({ ...player, current: current + 1, play: true });
     };
 
     const previousHandler = () => {
         playing();
         if (current === 0) {
-            setCurrent(paths.length - 1);
-        } else {
-            setCurrent(current - 1);
+            return setPlayer({ ...player, current: paths.length - 1, play: true });
         }
+        return setPlayer({ ...player, current: current - 1, play: true });
     };
 
     const playHandler = () => {
         if (play) {
-            stoping();
-        } else {
-            playing();
+            return stoping();
         }
+        return playing();
     };
 
     const stopHandler = () => {
         stoping();
         audioRef.current!.currentTime = 0;
-        setCurrentTime(0);
-        setPlay(false);
+        setPlayer({ ...player, play: false, currentTime: 0 });
     };
 
     const audioPlaySpeed = (speed: number) => {
@@ -62,17 +78,16 @@ export default function useAudioPlayer (paths:string[]) {
     };
 
     const volumeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setVolume(+e.currentTarget.value);
+        setPlayer({ ...player, volume: +e.currentTarget.value });
         audioRef.current!.volume = +e.currentTarget.value / 100;
     };
 
     const onLoadedData = () => {
-        setDuration(audioRef.current!.duration);
-        setAudioLoaded(true);
+        setPlayer({ ...player, duration: audioRef.current!.duration, audioLoaded: true });
     };
 
     const onTimeUpdate = () => {
-        setCurrentTime(audioRef.current!.currentTime);
+        setPlayer({ ...player, currentTime: audioRef.current!.currentTime });
     };
 
     return {

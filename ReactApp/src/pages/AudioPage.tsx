@@ -8,21 +8,20 @@ import style from '../styles/AudioPage.module.scss';
 
 export default function AudioPage () {
     const navigate = useNavigate();
+
     const {
-        allAudio,
+        allAudioLoading,
         newAudioLoad,
         data,
         fileName,
         inputFileHandler,
         mutate,
-        player,
-        playerHandler,
     } = useAudioPage();
 
-    if (allAudio || newAudioLoad) {
+    if (allAudioLoading || newAudioLoad) {
         return (
-            <div className='mover__position'>
-                <div className="mover"></div>
+            <div className='loader__position'>
+                <div className="loader"></div>
             </div>
         );
     }
@@ -34,34 +33,25 @@ export default function AudioPage () {
 
     return (
         <div className={ style.pageWrap }>
+            <div className={ style.playerWrap }>
+                <div className={ style.player }>
+                    <AudioPlayer paths={ data.data }/>
+                </div>
+                <div className={ style.playList }>
+                    {data.data.map((path, i) => <AudioItem key={ i } path={ path }/>)}
+                </div>
+            </div>
+            <Button
+                label='return home'
+                type='button'
+                onClick={ () => navigate('/') }
+            />
             <AudioUpload
                 newAudioLoad={ newAudioLoad }
                 mutate={ mutate }
                 fileName={ fileName }
                 inputFileHandler={ inputFileHandler }
             />
-            <div className={ style.playerWrap }>
-                {player
-                    ? <>
-                        <div className={ style.player }>
-                            <AudioPlayer paths={ data.data }/>
-                        </div>
-                        <div className={ style.playList }>
-                            {data.data.map((path, i) => <AudioItem key={ i } path={ path }/>)}
-                        </div>
-                    </>
-                    : <Button
-                        label='play all files'
-                        type='button'
-                        onClick={ playerHandler }/>
-                }
-            </div>
-            {player
-            && <Button
-                label='return'
-                type='button'
-                onClick={ () => navigate('/') }
-            />}
         </div>
     );
 }

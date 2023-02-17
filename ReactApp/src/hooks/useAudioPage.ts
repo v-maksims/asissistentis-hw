@@ -5,16 +5,15 @@ import audioAPI from '../api/audioAPI';
 import useToasts from '../hooks/useToasts';
 
 export default function useAudioPage () {
-    const [player, setPlayer] = useState(false);
     const [fileName, setFileName] = useState('');
+    const { toastErrorHandler, toastSuccesHandler } = useToasts();
 
     const { getAudio, addAudio } = audioAPI();
-    const { data, isLoading: allAudio } = useQuery({
+
+    const { data, isLoading: allAudioLoading } = useQuery({
         queryKey: ['audio'],
         queryFn: getAudio,
     });
-
-    const { toastErrorHandler, toastSuccesHandler } = useToasts();
 
     const { mutate, isLoading: newAudioLoad } = useMutation({
         mutationFn: addAudio,
@@ -30,18 +29,12 @@ export default function useAudioPage () {
         setFileName(name);
     };
 
-    const playerHandler = () => {
-        setPlayer(!player);
-    };
-
     return {
-        allAudio,
+        allAudioLoading,
         newAudioLoad,
         data,
         mutate,
         fileName,
         inputFileHandler,
-        player,
-        playerHandler,
     };
 }

@@ -1,28 +1,11 @@
-import { useState } from 'react';
 import Avatar from '../components/Avatar';
-import Button from '../components/Buttons/button/Button';
 import style from '../styles/AvatarPage.module.scss';
 
-export default function AvatarPage () {
-    const [openAvatar, setOpenAvatar] = useState(false);
+const AvatarPage = () => (
+    <div className= { style.avatarWrap }>
+        <span>Choice elements:</span>
+        <Avatar/>
+    </div>
+);
 
-    return (
-        <>
-            <div className= { style.avatarWrap }>
-                <div>
-                    <Button
-                        label={ openAvatar ? 'close avatar' : 'open avatar' }
-                        type='button'
-                        onClick={ () => { setOpenAvatar(!openAvatar); } }
-                    />
-                </div>
-                {openAvatar
-                    && <>
-                        <span>Choice different parts:</span>
-                        <Avatar/>
-                    </>
-                }
-            </div>
-        </>
-    );
-}
+export default AvatarPage;

@@ -54,6 +54,7 @@ export default function AudioUpload (props: TAudioUploadProps) {
                     <Button
                         label='add'
                         type='submit'
+                        disabled={ !files }
                     />
                 </form>
             </div>}

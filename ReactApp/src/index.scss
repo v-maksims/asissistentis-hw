@@ -44,9 +44,7 @@
   }
 }
 
-// mover 
-
-.mover {
+.loader {
   background: rgba(248, 25, 25, 0.979);
   height: 10px;
   width: 80px;
@@ -55,8 +53,8 @@
   animation: mover5 2s ease-in-out infinite;
 }
 
-.mover::before,
-.mover::after {
+.loader::before,
+.loader::after {
   content: '';
   position: absolute;
   height: 10px;
@@ -65,13 +63,13 @@
   animation: mover5 2s ease-in-out infinite;
 }
 
-.mover::before {
+.loader::before {
   background: rgb(201, 1, 1);
   top: 20px;
   width: 50px;
 }
 
-.mover::after {
+.loader::after {
   background: rgb(255, 116, 106);
   top: -20px;
   width: 60px;
@@ -91,7 +89,7 @@
   }
 }
 
-.mover__position{
+.loader__position{
   position: absolute;
   top: 50%;
   left: 50%;

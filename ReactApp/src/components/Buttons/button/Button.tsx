@@ -1,9 +1,10 @@
 import style from './Button.module.scss';
 
 type TButtonProps = {
-    onClick?: () => void,
-    label: string,
-    type: 'submit' | 'button'
+    onClick?: () => void;
+    label: string;
+    type: 'submit' | 'button';
+    disabled?: boolean;
 }
 
 export default function Button (props: TButtonProps) {
@@ -11,6 +12,7 @@ export default function Button (props: TButtonProps) {
         label,
         onClick,
         type,
+        disabled,
     } = props;
     return (
         <>
@@ -18,6 +20,7 @@ export default function Button (props: TButtonProps) {
                 className={ style.button }
                 onClick={ onClick }
                 type={ type }
+                disabled={ disabled }
             >
                 {label}
             </button>
