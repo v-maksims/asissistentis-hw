@@ -11,7 +11,7 @@ export default function Navigation (props: TNavigationProps) {
     return (
         <NavLink
             className='nav-link'
-            to={ to }
+            to={to}
         >
             <span>{label}</span>
         </NavLink>

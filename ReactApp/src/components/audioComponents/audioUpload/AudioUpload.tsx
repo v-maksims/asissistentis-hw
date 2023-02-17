@@ -7,15 +7,14 @@ import useToasts from '../../../hooks/useToasts';
 type TAudioUploadProps = {
     newAudioLoad: boolean,
     mutate: (data:FormData) => void,
-    fileName: string,
-    inputFileHandler: (name: string) => void,
+    fileCount: number,
+    inputFileHandler: (name: number) => void,
 }
 
 export default function AudioUpload (props: TAudioUploadProps) {
     const {
-        newAudioLoad,
         mutate,
-        fileName,
+        fileCount,
         inputFileHandler,
     } = props;
 
@@ -27,37 +26,37 @@ export default function AudioUpload (props: TAudioUploadProps) {
 
     return (
         <>
-            {!newAudioLoad && <div className={ style.uploadWrap }>
-                <span className={ style.uploadText }>Upload audio files:</span>
+            <div className={style.uploadWrap}>
+                <span className={style.uploadText}>Upload audio files:</span>
                 <form
-                    className={ style.form }
-                    onSubmit={ (e) => {
+                    className={style.form}
+                    onSubmit={(e) => {
                         e.preventDefault();
                         const formData = new FormData();
                         for (const file of files!) {
                             formData.append('audio', file);
                         }
-                        if (files!.length > 10 || files!.length === 0) {
-                            toastErrorHandler('Min 1 and max 10 audio', 5000, 'top-right');
-                        } else {
-                            mutate(formData);
+
+                        if (files!.length > 10) {
+                            return toastErrorHandler('Max 10 audio files', 5000, 'top-right');
                         }
-                    } }>
-                    <div className={ style.inputWrap }>
+                        return mutate(formData);
+                    }}>
+                    <div className={style.inputWrap}>
                         <InputFile
-                            inputRef = { inputRef }
+                            inputRef = {inputRef}
                             accept = '.mp3,.aac,.wav'
-                            onChange= { inputFileHandler }
+                            onChange= {inputFileHandler}
                         />
-                        <span className={ style.fileName }>{fileName ? `${fileName} files` : ''}</span>
+                        <span className={style.fileName}>{fileCount ? `${fileCount} files` : ''}</span>
                     </div>
                     <Button
                         label='add'
                         type='submit'
-                        disabled={ !files }
+                        disabled={!fileCount}
                     />
                 </form>
-            </div>}
+            </div>
         </>
     );
 }

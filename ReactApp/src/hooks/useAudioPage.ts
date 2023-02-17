@@ -5,7 +5,7 @@ import audioAPI from '../api/audioAPI';
 import useToasts from '../hooks/useToasts';
 
 export default function useAudioPage () {
-    const [fileName, setFileName] = useState('');
+    const [fileCount, setFileCount] = useState(0);
     const { toastErrorHandler, toastSuccesHandler } = useToasts();
 
     const { getAudio, addAudio } = audioAPI();
@@ -19,14 +19,14 @@ export default function useAudioPage () {
         mutationFn: addAudio,
         onSuccess: () => {
             queryClient.invalidateQueries({ queryKey: ['audio'] });
-            setFileName('');
+            setFileCount(0);
             toastSuccesHandler('Audio loaded!', 2000, 'top-right');
         },
         onError: () => toastErrorHandler('Some went wrong!', 3000, 'top-right'),
     });
 
-    const inputFileHandler = (name: string) => {
-        setFileName(name);
+    const inputFileHandler = (count: number) => {
+        setFileCount(count);
     };
 
     return {
@@ -34,7 +34,7 @@ export default function useAudioPage () {
         newAudioLoad,
         data,
         mutate,
-        fileName,
+        fileCount,
         inputFileHandler,
     };
 }

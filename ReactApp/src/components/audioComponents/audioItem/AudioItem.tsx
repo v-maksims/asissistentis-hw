@@ -23,9 +23,9 @@ export default function AudioItem (props: TAudioItemProps) {
             </div>
             <div>
                 <audio
-                    ref={ audioRef }
-                    src={ `http://localhost:3004${path}` }
-                    onLoadedData ={ () => setDuration(audioRef.current!.duration) }
+                    ref={audioRef}
+                    src={`http://localhost:3004${path}`}
+                    onLoadedData ={() => setDuration(audioRef.current!.duration)}
                 >
                 </audio>
             </div>

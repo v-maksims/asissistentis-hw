@@ -14,9 +14,9 @@ export default function ButtonControl (props: TButtonControlProps) {
     return (
         <>
             <button
-                className={ style.control }
-                onClick={ onClick }
-                type={ type }
+                className={style.control}
+                onClick={onClick}
+                type={type}
             >
                 <>
                     {ico}

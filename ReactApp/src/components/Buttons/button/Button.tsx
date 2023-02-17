@@ -17,10 +17,10 @@ export default function Button (props: TButtonProps) {
     return (
         <>
             <button
-                className={ style.button }
-                onClick={ onClick }
-                type={ type }
-                disabled={ disabled }
+                className={style.button}
+                onClick={onClick}
+                type={type}
+                disabled={disabled}
             >
                 {label}
             </button>

@@ -18,12 +18,12 @@ export default function InputRange (props: TInputRangeProps) {
     return (
         <>
             <input
-                className={ style.range }
+                className={style.range}
                 type="range"
-                value={ value }
-                min={ min }
-                max={ max }
-                onChange={ onChange }
+                value={value}
+                min={min}
+                max={max}
+                onChange={onChange}
             />
         </>
     );

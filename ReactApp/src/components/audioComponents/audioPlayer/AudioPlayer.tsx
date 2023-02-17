@@ -62,69 +62,69 @@ export default function AudioPlayer (props: TAudioPlayerProps) {
     }, [play]);
 
     return (
-        <div className={ style.audioPlayerWrap }>
-            <div className={ style.audioTextAndNextPrevios }>
+        <div className={style.audioPlayerWrap}>
+            <div className={style.audioTextAndNextPrevios}>
                 <ButtonControl
-                    ico={ <MdNavigateBefore size={ 45 }/> }
-                    onClick={ previousHandler }
+                    ico={<MdNavigateBefore size={45}/>}
+                    onClick={previousHandler}
                     type='button'
                 />
-                <span className={ style.audio }>{audioLoaded && paths[current].replace('/static/audio/', '')}</span>
+                <span className={style.audio}>{audioLoaded && paths[current].replace('/static/audio/', '')}</span>
                 <ButtonControl
-                    ico={ <MdNavigateNext size={ 45 }/> }
-                    onClick={ nextHandler }
+                    ico={<MdNavigateNext size={45}/>}
+                    onClick={nextHandler}
                     type='button'
                 />
             </div>
             <div>
                 <audio
-                    src={ `${baseURL}${paths[current]}` }
-                    ref={ audioRef }
-                    onLoadedData={ onLoadedData }
-                    onTimeUpdate={ onTimeUpdate }
-                    onEnded={ nextHandler }
+                    src={`${baseURL}${paths[current]}`}
+                    ref={audioRef}
+                    onLoadedData={onLoadedData}
+                    onTimeUpdate={onTimeUpdate}
+                    onEnded={nextHandler}
                 ></audio>
             </div>
-            <div className={ style.controlsWrap }>
+            <div className={style.controlsWrap}>
                 <ButtonControl
                     type='button'
-                    ico={ play ? <MdPause size={ 30 }/> : <MdPlayArrow size={ 30 }/> }
-                    onClick={ playHandler }
+                    ico={play ? <MdPause size={30}/> : <MdPlayArrow size={30}/>}
+                    onClick={playHandler}
                 />
                 <ButtonControl
                     type='button'
-                    ico={ <MdStop size={ 30 }/> }
-                    onClick={ stopHandler }
+                    ico={<MdStop size={30}/>}
+                    onClick={stopHandler}
                 />
-                <span className={ style.time }>{calculateTime(currentTime)}</span>
+                <span className={style.time}>{calculateTime(currentTime)}</span>
                 <InputRange
-                    value={ currentTime }
-                    min={ 0 }
-                    max={ duration }
-                    onChange={ timeLineHandler }
+                    value={currentTime}
+                    min={0}
+                    max={duration}
+                    onChange={timeLineHandler}
                 />
-                <span className={ style.time }>{calculateTime(duration)}</span>
+                <span className={style.time}>{calculateTime(duration)}</span>
                 <div>
                     {volume === 0 && <MdVolumeOff/> }
                     {(volume > 0 && volume < 50) && <MdVolumeDown/> }
                     {(volume > 50) && <MdVolumeUp/> }
                 </div>
                 <InputRange
-                    value={ volume }
-                    min={ 0 }
-                    max={ 100 }
-                    onChange={ volumeHandler }
+                    value={volume}
+                    min={0}
+                    max={100}
+                    onChange={volumeHandler}
                 />
             </div>
             <span>Speed:</span>
-            <div className={ style.speedControls }>
-                <Button label='0.25' type='button' onClick={ () => audioPlaySpeed(0.25) }/>
-                <Button label='0.5' type='button' onClick={ () => audioPlaySpeed(0.5) }/>
-                <Button label='normal' type='button' onClick={ () => audioPlaySpeed(1) }/>
-                <Button label='1.25' type='button' onClick={ () => audioPlaySpeed(1.25) }/>
-                <Button label='1.50' type='button' onClick={ () => audioPlaySpeed(1.5) }/>
-                <Button label='1.75' type='button' onClick={ () => audioPlaySpeed(1.75) }/>
-                <Button label='2' type='button' onClick={ () => audioPlaySpeed(2) }/>
+            <div className={style.speedControls}>
+                <Button label='0.25' type='button' onClick={() => audioPlaySpeed(0.25)}/>
+                <Button label='0.5' type='button' onClick={() => audioPlaySpeed(0.5)}/>
+                <Button label='normal' type='button' onClick={() => audioPlaySpeed(1)}/>
+                <Button label='1.25' type='button' onClick={() => audioPlaySpeed(1.25)}/>
+                <Button label='1.50' type='button' onClick={() => audioPlaySpeed(1.5)}/>
+                <Button label='1.75' type='button' onClick={() => audioPlaySpeed(1.75)}/>
+                <Button label='2' type='button' onClick={() => audioPlaySpeed(2)}/>
             </div>
         </div>
     );

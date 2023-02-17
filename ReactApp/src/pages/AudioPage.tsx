@@ -13,7 +13,7 @@ export default function AudioPage () {
         allAudioLoading,
         newAudioLoad,
         data,
-        fileName,
+        fileCount,
         inputFileHandler,
         mutate,
     } = useAudioPage();
@@ -32,25 +32,25 @@ export default function AudioPage () {
     }
 
     return (
-        <div className={ style.pageWrap }>
-            <div className={ style.playerWrap }>
-                <div className={ style.player }>
-                    <AudioPlayer paths={ data.data }/>
+        <div className={style.pageWrap}>
+            <div className={style.playerWrap}>
+                <div className={style.player}>
+                    <AudioPlayer paths={data.data}/>
                 </div>
-                <div className={ style.playList }>
-                    {data.data.map((path, i) => <AudioItem key={ i } path={ path }/>)}
+                <div className={style.playList}>
+                    {data.data.map((path, i) => <AudioItem key={i} path={path}/>)}
                 </div>
             </div>
             <Button
                 label='return home'
                 type='button'
-                onClick={ () => navigate('/') }
+                onClick={() => navigate('/')}
             />
             <AudioUpload
-                newAudioLoad={ newAudioLoad }
-                mutate={ mutate }
-                fileName={ fileName }
-                inputFileHandler={ inputFileHandler }
+                newAudioLoad={newAudioLoad}
+                mutate={mutate}
+                fileCount={fileCount}
+                inputFileHandler={inputFileHandler}
             />
         </div>
     );

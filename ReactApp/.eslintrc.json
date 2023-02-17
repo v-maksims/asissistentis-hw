@@ -30,7 +30,7 @@
         "@typescript-eslint/no-non-null-assertion": "off",
         "react/jsx-curly-spacing": [
             "error",
-            "always"
+            "never"
         ],
         "react/react-in-jsx-scope": "off",
         "indent": [

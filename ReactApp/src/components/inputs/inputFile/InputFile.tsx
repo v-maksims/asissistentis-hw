@@ -4,7 +4,7 @@ import style from './InputFile.module.scss';
 type TInputFileProps = {
     inputRef: React.RefObject<HTMLInputElement>,
     accept: string,
-    onChange: (name: string) => void
+    onChange: (count: number) => void
 }
 
 export default function InputFile (props:TInputFileProps) {
@@ -12,17 +12,17 @@ export default function InputFile (props:TInputFileProps) {
     return (
         <>
             <input
-                ref={ inputRef }
-                className={ style.input }
+                ref={inputRef}
+                className={style.input}
                 type="file"
-                accept={ accept }
+                accept={accept}
                 name='file'
                 id='file'
-                onChange={ () => onChange(String(inputRef.current!.files?.length)) }
+                onChange={() => onChange(inputRef.current!.files!.length)}
                 multiple
             />
             <label
-                className={ style.inputFake }
+                className={style.inputFake}
                 htmlFor="file"
             >
                    +
