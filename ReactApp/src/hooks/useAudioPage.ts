@@ -22,7 +22,7 @@ export default function useAudioPage () {
             setFileCount(0);
             toastSuccesHandler('Audio loaded!', 2000, 'top-right');
         },
-        onError: () => toastErrorHandler('Some went wrong!', 3000, 'top-right'),
+        onError: () => toastErrorHandler('Something went wrong!', 3000, 'top-right'),
     });
 
     const inputFileHandler = (count: number) => {

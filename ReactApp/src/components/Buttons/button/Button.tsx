@@ -14,6 +14,7 @@ export default function Button (props: TButtonProps) {
         type,
         disabled,
     } = props;
+
     return (
         <>
             <button

@@ -9,6 +9,7 @@ type TInputFileProps = {
 
 export default function InputFile (props:TInputFileProps) {
     const { inputRef, accept, onChange } = props;
+
     return (
         <>
             <input

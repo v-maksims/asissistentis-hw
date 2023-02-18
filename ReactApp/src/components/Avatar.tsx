@@ -8,7 +8,7 @@ import useToasts from '../hooks/useToasts';
 export default function Avatar () {
     const svgRef = useRef<HTMLDivElement>(null);
 
-    const { toastSuccesHandler } = useToasts();
+    const { toastSuccesHandler, toastErrorHandler } = useToasts();
 
     const clickHandler = (e: React.MouseEvent<SVGPathElement, MouseEvent>) => {
         const cur = e.currentTarget.classList;
@@ -27,6 +27,9 @@ export default function Avatar () {
             link.download = 'image.png';
             link.href = canvas.toDataURL();
             link.click();
+            toastSuccesHandler('Image download', 2500, 'top-right');
+        }).catch(() => {
+            toastErrorHandler('Something went wrong', 2500, 'top-right');
         });
     };
 
@@ -93,10 +96,7 @@ export default function Avatar () {
             <Button
                 label='download'
                 type='button'
-                onClick={() => {
-                    handleDownload();
-                    toastSuccesHandler('Image download', 2500, 'top-right');
-                }}
+                onClick={handleDownload}
             />
         </>
     );

@@ -9,19 +9,18 @@ type TButtonControlProps = {
 
 export default function ButtonControl (props: TButtonControlProps) {
     const {
-        ico, onClick, type,
+        ico,
+        onClick,
+        type,
     } = props;
+
     return (
-        <>
-            <button
-                className={style.control}
-                onClick={onClick}
-                type={type}
-            >
-                <>
-                    {ico}
-                </>
-            </button>
-        </>
+        <button
+            className={style.control}
+            onClick={onClick}
+            type={type}
+        >
+            {ico}
+        </button>
     );
 }

@@ -15,6 +15,7 @@ export default function InputRange (props: TInputRangeProps) {
         value,
         onChange,
     } = props;
+
     return (
         <>
             <input

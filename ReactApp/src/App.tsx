@@ -20,11 +20,10 @@ const App = () => (
             to='/audio'
             label='audio'
         />
-
         <Routes>
-            <Route path='/' element={ <HomePage/> }/>
-            <Route path='/avatar' element={ <AvatarPage/> }/>
-            <Route path='/audio' element={ <AudioPage/> }/>
+            <Route path='/' element={<HomePage/>}/>
+            <Route path='/avatar' element={<AvatarPage/>}/>
+            <Route path='/audio' element={<AudioPage/>}/>
         </Routes>
         <ToastContainer/>
     </div>

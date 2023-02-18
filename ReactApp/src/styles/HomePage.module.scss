@@ -1,11 +1,34 @@
-.title {
+.mainTitle {
     font-size: 3rem;
     font-weight: 700;
     text-align: center;
+    margin: 25px 0;
 }
-.paragraph{
-    margin-top: 15px;
-    font-size: 1.25rem;
-    line-height: 1.2rem;
-    text-align: center;
+
+.secondaryTitle{
+    font-weight: 700;
+    font-size: 2rem;
+    color: rgb(177, 176, 176);
+}
+
+.mainWrap{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    font-size: 1.5rem;
+}
+
+.authorWrap{
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.ulWrap{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    list-style-type: circle;
+    list-style-position: inside;
+    margin-left: 15px;
 }
